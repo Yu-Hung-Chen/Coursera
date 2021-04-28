@@ -1,3 +1,16 @@
+# Read xls file (successful)
+import pandas as pd    
+import requests
+
+hdr = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+            "X-Requested-With": "XMLHttpRequest"} #change the version of the browser accordingly
+
+resp = requests.get('https://furmancenter.org/files/NDP/BK01_NeighborhoodDataProfile.xlsx', headers = hdr)
+
+pd.read_excel(resp.content, 'BK 01 Data')
+
+
 # Read csv file from an URL
 #1 (Work with csv but not clean)
 from io import StringIO
